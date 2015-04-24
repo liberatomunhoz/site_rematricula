@@ -8,8 +8,11 @@
 		    {headerinc}
 	  </head>
 	  <body>
-			{conteudo}
+	  		<div class="row paineladm">
+				{conteudo}
+			</div>
 	  		<script src="js/foundation.min.js"></script>
 	  		{rodape}
+	  		{footerinc}
 	  </body>
 </html>

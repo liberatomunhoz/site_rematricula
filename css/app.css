@@ -1,0 +1,37 @@
+.loginform{
+    margin-top: 100px;
+}
+/*
+.top .top-bar-section .dropdown li a{
+    line-height: 20px;
+}
+.side-bar{
+    float: left;
+    background: #eee;
+}
+.panel-admin, .side-bar .accordion .accordion-navigation>.content.active, .accordion dd>.content.active{
+    background: #eee;
+}
+.side-bar .accordion .accordion-navigation>a, .accordion dd>a{
+    color: #999;
+}
+.side-bar img{
+    width: 32px;
+    margin-right: 5px;
+}
+.side-bar [class*="block-grid-"]>li,
+    .side-bar .accordion .accordion-navigation>.content, .accordion dd>.content,
+    .side-bar .accordion .accordion-navigation>.content, .accordion dd>.content ul{
+    padding: 0;
+}
+
+.content button, .content .button{
+    padding-top: 0.625em;
+    padding-bottom: 0.625em;
+    padding-left: 1.25em;
+    padding-right: 1.25em;
+}
+.content a.cancelar{
+    margin-left: 10px;
+}
+*/
