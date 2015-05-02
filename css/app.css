@@ -1,6 +1,10 @@
 .loginform{
     margin-top: 100px;
 }
+
+.alert-box p{
+    margin: 0 !important;
+}
 /*
 .top .top-bar-section .dropdown li a{
     line-height: 20px;

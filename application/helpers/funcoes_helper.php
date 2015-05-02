@@ -42,6 +42,7 @@ function init_painel()
     $CI->load->library(array('parser','sistema', 'session', 'form_validation'));
     $CI->load->helper(array('form', 'url', 'array', 'text'));
     //carregamento dos models
+    $CI->load->model('usuarios_model', 'usuarios');
 
     set_tema('titulo_padrao', 'Liberato');
     set_tema('rodape', '<p>&copy; 2015 | Todos os direitos reservados a Rodrigo Molina');
@@ -104,3 +105,9 @@ function load_js($arquivo=NULL, $pasta='js', $remoto=FALSE)
   return $retorno; 
 }
 
+//mostra erro de validação em forms
+function erros_validacao(){
+  if (validation_errors()) {
+    echo '<div class="alert-box alert">'.validation_errors('<p>','</p>').'</div>';    
+  }
+}
