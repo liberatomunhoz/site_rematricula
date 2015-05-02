@@ -49,7 +49,7 @@ function init_painel()
     set_tema('template', 'painel_view'); 
 
     set_tema('headerinc', load_css(array('foundation.min','app')), FALSE);
-    set_tema('footerinc', load_js(array('foundation.min','app')), FALSE);       
+    set_tema('footerinc', load_js(array('foundation.min','app')), FALSE);      
 }
 
 //carrega um template passando o array tema como parametro
@@ -110,4 +110,21 @@ function erros_validacao(){
   if (validation_errors()) {
     echo '<div class="alert-box alert">'.validation_errors('<p>','</p>').'</div>';    
   }
+}
+
+//verifica se o usuario está logado no sistema
+function esta_logado($redir=TRUE){
+  $CI =& get_instance();
+  $CI->load->library('session');
+  $user_status = $CI->session->userdata('user_logado'); 
+  if (!isset($user_status) || $user_status != TRUE) {
+     $CI->session->sess_destroy();
+     if ($redir) {
+       $redirect('usuarios/login');
+     } else {
+       return FALSE;
+     }     
+   } else {
+      return TRUE;
+   }    
 }
