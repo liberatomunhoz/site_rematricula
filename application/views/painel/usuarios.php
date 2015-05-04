@@ -5,7 +5,9 @@ switch ($tela) {
         echo '<div class="small-5 columns small-centered">';
         echo form_open('usuarios/login', array('class'=>'custom loginform'));
         echo form_fieldset('Identifique-se');
+        get_msg('errologin');
         erros_validacao();
+        get_msg('logoffok');
         echo form_label('Usuário');
         echo form_input(array('name'=>'usuario'), set_value('usuario'), 'autofocus');
         echo form_label('Senha');

@@ -128,3 +128,33 @@ function esta_logado($redir=TRUE){
       return TRUE;
    }    
 }
+
+//define uma mensagem para ser exibida na próxima tela carregada
+function set_msg($id='msgerro', $msg=NULL, $tipo='erro'){
+  $CI =& get_instance();
+  switch ($tipo):
+    case 'erro':
+      $CI->session->set_flashdata($id, '<div class="alert-box alert"><p>'.$msg.'</p></div>');
+      break;
+    case 'sucesso':
+      $CI->session->set_flashdata($id, '<div class="alert-box success"><p>'.$msg.'</p></div>');
+      break;
+    default:
+      $CI->session->set_flashdata($id, '<div class="alert-box"><p>'.$msg.'</p></div>');
+      break;
+  endswitch;
+}
+
+//verifica se existe uma mensagem para ser exibida na tela atual
+function get_msg($id, $printar=TRUE){
+  $CI =& get_instance();
+  if ($CI->session->flashdata($id)) {
+    if ($printar){
+      echo $CI->session->flashdata($id);
+      return TRUE;
+    } else {
+      return $CI->session->flashdata($id);
+    }
+  }
+  return FALSE;
+}
