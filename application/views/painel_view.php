@@ -11,7 +11,7 @@
 	  		<?php if (esta_logado(FALSE)) { ?>
 	  			<div class="row header">
 	  				<div class="eight columns">
-	  					<a href="<?php echo base_url('painel'); ?>"><h1>Painel ADM</h1></a>
+	  					<a href="<?php echo base_url('painel'); ?>"><h3>Liberato - ADMINISTRADOR</h3></a>
 	  				</div>
 	  				<div class="four columns">
 	  					<p class="text-right">Logado como <strong><?php echo $this->session->userdata('user_nome'); ?></strong></p>
@@ -22,18 +22,62 @@
 	  				</div>
 	  			</div>
 	  			<div class="row">
-	  				<div class="twelve columns menu-site">
-	  					<ul class="nav-bar">
+	  				<nav class="top-bar" data-topbar role="navigation">
+					  	<section class="top-bar-section">
+					    	<!-- Left Nav Section -->
+					    	<ul class="left">
+					    		<li><?php echo anchor('painel', 'Início'); ?></li>
+					      		<li class="has-dropdown">
+					        		<?php echo anchor('usuarios/gerenciar', 'Cursos'); ?>
+					        		<ul class="dropdown">
+					          			<li><?php echo anchor('usuarios/cadastrar', 'Cadastrar'); ?></li>
+										<li><?php echo anchor('usuarios/gerenciar', 'Gerenciar'); ?></li>
+					        		</ul>
+					      		</li>
+					      		<li class="has-dropdown">
+					        		<?php echo anchor('usuarios/gerenciar', 'Disciplinas'); ?>
+					        		<ul class="dropdown">
+					          			<li><?php echo anchor('usuarios/cadastrar', 'Cadastrar'); ?></li>
+										<li><?php echo anchor('usuarios/gerenciar', 'Gerenciar'); ?></li>
+					        		</ul>
+					      		</li>
+					      		<li class="has-dropdown">
+					        		<?php echo anchor('usuarios/gerenciar', 'Professor'); ?>
+					        		<ul class="dropdown">
+					          			<li><?php echo anchor('usuarios/cadastrar', 'Cadastrar'); ?></li>
+										<li><?php echo anchor('usuarios/gerenciar', 'Gerenciar'); ?></li>
+					        		</ul>
+					      		</li>
+					      		<li class="has-dropdown">
+					        		<?php echo anchor('usuarios/gerenciar', 'Aluno'); ?>
+					        		<ul class="dropdown">
+					          			<li><?php echo anchor('usuarios/cadastrar', 'Cadastrar'); ?></li>
+										<li><?php echo anchor('usuarios/gerenciar', 'Gerenciar'); ?></li>
+					        		</ul>
+					      		</li>
+					      		<li class="has-dropdown">
+					        		<?php echo anchor('usuarios/gerenciar', 'Turmas'); ?>
+					        		<ul class="dropdown">
+					          			<li><?php echo anchor('usuarios/cadastrar', 'Cadastrar'); ?></li>
+										<li><?php echo anchor('usuarios/gerenciar', 'Gerenciar'); ?></li>
+					        		</ul>
+					      		</li>
+					    	</ul>
+					  	</section>
+					</nav> 
+	  			<!--	<section class="top-bar-section">
+                    	<ul class="left">
+                        	<li class="divider show-for-small-only"></li>
+                        	<li class="has-dropdown">
 	  						<li><?php echo anchor('painel', 'Início'); ?></li>
-							<li class="has-flyout">
 							<?php echo anchor('usuarios/gerenciar', 'Usuários'); ?>
-								<ul class="flyout">
+								<ul class="dropdown">
 									<li><?php echo anchor('usuarios/cadastrar', 'Cadastrar'); ?></li>
 									<li><?php echo anchor('usuarios/gerenciar', 'Gerenciar'); ?></li>
 								</ul>
 							</li>
-	  					</ul>  
-	  				</div>
+	  					</ul> 
+					</section> -->
 	  			</div>	
 	  		<?php } ?>
 	  		<div class="row paineladm">

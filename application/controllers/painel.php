@@ -15,7 +15,7 @@ class Painel extends CI_Controller {
 	public function inicio()
 	{
 		if (esta_logado(FALSE)) {
-			set_tema('titulo', 'Painel ADM');
+			set_tema('titulo', 'Adminitrador');
 			set_tema('conteudo', '<div class="twelve columns"><p>Escolha um menu para iniciar</p></div>');
 			load_template();
 		} else {
