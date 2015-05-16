@@ -90,6 +90,85 @@ class Usuarios extends CI_Controller {
         load_template();
     }
 
+    public function cadastrar_aluno(){
+        esta_logado();
+        $this->form_validation->set_message('is_unique', 'Este %s já está cadastrado no sistema');
+        $this->form_validation->set_message('matches', 'O campo %s está diferente do campo %s');
+        $this->form_validation->set_rules('matricula', 'MATRICULA', 'trim|required|min_length[4]|is_unique[usuarios.login]|strtolower');
+        $this->form_validation->set_rules('cpf', 'CPF', 'trim|required');
+        $this->form_validation->set_rules('nome', 'NOME', 'trim|required|ucwords');
+        $this->form_validation->set_rules('sobrenome', 'SOBRENOME', 'trim|required|ucwords');
+        $this->form_validation->set_rules('data_nasc', 'DATA DE NASCIMENTO', 'trim|required');
+        $this->form_validation->set_rules('email', 'EMAIL', 'trim|required|valid_email|is_unique[usuarios.email]|strtolower');
+        //$this->form_validation->set_rules('login', 'LOGIN', 'trim|required|min_length[4]|is_unique[usuarios.login]|strtolower');
+        $this->form_validation->set_rules('senha', 'SENHA', 'trim|required|min_length[4]|strtolower');
+        $this->form_validation->set_rules('senha2', 'REPITA A SENHA', 'trim|required|min_length[4]|strtolower|matches[senha]');
+        if ($this->form_validation->run()==TRUE){
+        }
+        set_tema('titulo', 'Cadastro de Aluno(a)');
+        set_tema('conteudo', load_modulo('usuarios', 'cadastrar_aluno'));
+        load_template();
+    }
+
+    public function cadastrar_curso(){
+        esta_logado();
+        $this->form_validation->set_message('is_unique', 'Este %s já está cadastrado no sistema');
+        $this->form_validation->set_message('matches', 'O campo %s está diferente do campo %s');
+        $this->form_validation->set_rules('nome_curso', 'CURSO', 'trim|required|ucwords');
+        if ($this->form_validation->run()==TRUE){
+        }
+        set_tema('titulo', 'Cadastro de Curso');
+        set_tema('conteudo', load_modulo('usuarios', 'cadastrar_curso'));
+        load_template();
+    }
+
+    public function cadastrar_disciplina(){
+        esta_logado();
+        $this->form_validation->set_message('is_unique', 'Este %s já está cadastrado no sistema');
+        $this->form_validation->set_message('matches', 'O campo %s está diferente do campo %s');
+        $this->form_validation->set_rules('nome_disc', 'NOME DA DISCIPLINA', 'trim|required|ucwords');
+        $this->form_validation->set_rules('cod_curso', 'CÓDIGO DO CURSO', 'trim|required|ucwords');
+        $this->form_validation->set_rules('disc_pre', 'PRÉ-REQUISITO(S)', 'trim|required|ucwords');
+        if ($this->form_validation->run()==TRUE){
+        }
+        set_tema('titulo', 'Cadastro de Disciplina(s)');
+        set_tema('conteudo', load_modulo('usuarios', 'cadastrar_disciplina'));
+        load_template();
+    }
+
+     public function cadastrar_professor(){
+        esta_logado();
+        $this->form_validation->set_message('is_unique', 'Este %s já está cadastrado no sistema');
+        $this->form_validation->set_message('matches', 'O campo %s está diferente do campo %s');
+        $this->form_validation->set_rules('login', 'LOGIN', 'trim|required');
+        $this->form_validation->set_rules('cpf', 'CPF', 'trim|required');
+        $this->form_validation->set_rules('nome', 'NOME', 'trim|required|ucwords');
+        $this->form_validation->set_rules('sobrenome', 'SOBRENOME', 'trim|required|ucwords');
+        $this->form_validation->set_rules('data_nasc', 'DATA DE NASCIMENTO', 'trim|required');
+        $this->form_validation->set_rules('email', 'EMAIL', 'trim|required|valid_email|is_unique[usuarios.email]|strtolower');
+        //$this->form_validation->set_rules('login', 'LOGIN', 'trim|required|min_length[4]|is_unique[usuarios.login]|strtolower');
+        $this->form_validation->set_rules('senha', 'SENHA', 'trim|required|min_length[4]|strtolower');
+        $this->form_validation->set_rules('senha2', 'REPITA A SENHA', 'trim|required|min_length[4]|strtolower|matches[senha]');
+        if ($this->form_validation->run()==TRUE){
+        }
+        set_tema('titulo', 'Cadastro de Professor(s)');
+        set_tema('conteudo', load_modulo('usuarios', 'cadastrar_professor'));
+        load_template();
+    }
+
+    public function cadastrar_turma(){
+        esta_logado();
+        $this->form_validation->set_message('is_unique', 'Este %s já está cadastrado no sistema');
+        $this->form_validation->set_message('matches', 'O campo %s está diferente do campo %s');
+        $this->form_validation->set_rules('cod_turma', 'NÚMERO DA TURMA', 'trim|required');
+        $this->form_validation->set_rules('cod_disc', 'CÓDIGO DA DISCIPLINA', 'trim|required');
+        if ($this->form_validation->run()==TRUE){
+        }
+        set_tema('titulo', 'Cadastro de Turma(s)');
+        set_tema('conteudo', load_modulo('usuarios', 'cadastrar_turma'));
+        load_template();
+    }
+
 
 }
 

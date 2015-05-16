@@ -22,63 +22,50 @@
 	  				</div>
 	  			</div>
 	  			<div class="row">
-	  				<nav class="top-bar" data-topbar role="navigation">
-					  	<section class="top-bar-section">
-					    	<!-- Left Nav Section -->
-					    	<ul class="left">
-					    		<li><?php echo anchor('painel', 'Início'); ?></li>
-					      		<li class="has-dropdown">
-					        		<?php echo anchor('usuarios/gerenciar', 'Cursos'); ?>
-					        		<ul class="dropdown">
-					          			<li><?php echo anchor('usuarios/cadastrar', 'Cadastrar'); ?></li>
-										<li><?php echo anchor('usuarios/gerenciar', 'Gerenciar'); ?></li>
-					        		</ul>
-					      		</li>
-					      		<li class="has-dropdown">
-					        		<?php echo anchor('usuarios/gerenciar', 'Disciplinas'); ?>
-					        		<ul class="dropdown">
-					          			<li><?php echo anchor('usuarios/cadastrar', 'Cadastrar'); ?></li>
-										<li><?php echo anchor('usuarios/gerenciar', 'Gerenciar'); ?></li>
-					        		</ul>
-					      		</li>
-					      		<li class="has-dropdown">
-					        		<?php echo anchor('usuarios/gerenciar', 'Professor'); ?>
-					        		<ul class="dropdown">
-					          			<li><?php echo anchor('usuarios/cadastrar', 'Cadastrar'); ?></li>
-										<li><?php echo anchor('usuarios/gerenciar', 'Gerenciar'); ?></li>
-					        		</ul>
-					      		</li>
-					      		<li class="has-dropdown">
-					        		<?php echo anchor('usuarios/gerenciar', 'Aluno'); ?>
-					        		<ul class="dropdown">
-					          			<li><?php echo anchor('usuarios/cadastrar', 'Cadastrar'); ?></li>
-										<li><?php echo anchor('usuarios/gerenciar', 'Gerenciar'); ?></li>
-					        		</ul>
-					      		</li>
-					      		<li class="has-dropdown">
-					        		<?php echo anchor('usuarios/gerenciar', 'Turmas'); ?>
-					        		<ul class="dropdown">
-					          			<li><?php echo anchor('usuarios/cadastrar', 'Cadastrar'); ?></li>
-										<li><?php echo anchor('usuarios/gerenciar', 'Gerenciar'); ?></li>
-					        		</ul>
-					      		</li>
-					    	</ul>
-					  	</section>
-					</nav> 
-	  			<!--	<section class="top-bar-section">
-                    	<ul class="left">
-                        	<li class="divider show-for-small-only"></li>
-                        	<li class="has-dropdown">
-	  						<li><?php echo anchor('painel', 'Início'); ?></li>
-							<?php echo anchor('usuarios/gerenciar', 'Usuários'); ?>
-								<ul class="dropdown">
-									<li><?php echo anchor('usuarios/cadastrar', 'Cadastrar'); ?></li>
-									<li><?php echo anchor('usuarios/gerenciar', 'Gerenciar'); ?></li>
-								</ul>
-							</li>
-	  					</ul> 
-					</section> -->
-	  			</div>	
+		  			<div class="menu-wrap">
+					    <nav class="menu">
+					        <ul class="clearfix">
+					            <li><?php echo anchor('painel', 'Início'); ?></li>
+					            <li>
+					                <a href="#">Cursos<span class="arrow">&#9660;</span></a>
+					                <ul class="sub-menu">
+					                    <li><?php echo anchor('usuarios/cadastrar_curso', 'Cadastrar'); ?></li>
+					                    <li><?php echo anchor('usuarios/gerenciar_curso', 'Gerenciar'); ?></li>
+					                </ul>
+					            </li>
+					            <li>
+					                <a href="#">Disciplinas<span class="arrow">&#9660;</span></a>
+					                <ul class="sub-menu">
+					                    <li><?php echo anchor('usuarios/cadastrar_disciplina', 'Cadastrar'); ?></li>
+					                    <li><?php echo anchor('usuarios/gerenciar_disciplina', 'Gerenciar'); ?></li>
+					                </ul>
+					            </li>
+					            <li>
+					                <a href="#">Professores<span class="arrow">&#9660;</span></a>
+					                <ul class="sub-menu">
+					                    <li><?php echo anchor('usuarios/cadastrar_professor', 'Cadastrar'); ?></li>
+					                    <li><?php echo anchor('usuarios/gerenciar_professor', 'Gerenciar'); ?></li>
+					                </ul>
+					            </li>
+					            <li>
+					                <a href="#">Alunos<span class="arrow">&#9660;</span></a>
+					                <ul class="sub-menu">
+					                    <li><?php echo anchor('usuarios/cadastrar_aluno', 'Cadastrar'); ?></li>
+					                    <li><?php echo anchor('usuarios/gerenciar_aluno', 'Gerenciar'); ?></li>
+					                </ul>
+					            </li>
+					            <li>
+					                <a href="#">Turmas<span class="arrow">&#9660;</span></a>
+					                <ul class="sub-menu">
+					                    <li><?php echo anchor('usuarios/cadastrar_turma', 'Cadastrar'); ?></li>
+					                    <li><?php echo anchor('usuarios/gerenciar_turma', 'Gerenciar'); ?></li>
+					                </ul>
+					            </li>
+					            
+					        </ul>
+					    </nav>
+					</div>
+				</div>	
 	  		<?php } ?>
 	  		<div class="row paineladm">
 				{conteudo}
