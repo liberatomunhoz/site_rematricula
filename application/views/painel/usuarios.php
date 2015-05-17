@@ -136,7 +136,50 @@ switch ($tela) {
         echo form_fieldset_close();
         echo form_close();
         echo '</div>';
-        break;       
+        break;
+    case 'gerenciar':
+        ?>
+     <!--   <script type="text/javascript">
+            $(function(){
+                $('.deletareg').click(function(){
+                    if (confirm("Deseja realmente excluir este registro?\nEsta operação não poderá ser desfeita!")) return true; else return false;
+                });
+            });
+        </script>  -->
+        <div class="twelve columns ">
+            <?php
+            //echo breadcrumb();
+            get_msg('msgok');
+            get_msg('msgerro');
+            ?>
+            <table class="twelve data-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Login</th>
+                        <th>Email</th>
+                        <th>Ativo / Adm</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $query = $this->usuarios->get_all()->result();
+                    foreach ($query as $linha):
+                        echo '<tr>';
+                        printf('<td>%s</td>', $linha->nome);
+                        printf('<td>%s</td>', $linha->login);
+                        printf('<td>%s</td>', $linha->email);
+                        printf('<td>%s / %s</td>', ($linha->ativo==0) ? 'Não' : 'Sim', ($linha->adm==0) ? 'Não' : 'Sim');
+                        printf('<td class="text-center">%s%s%s</td>', anchor("usuarios/editar/$linha->id", ' ', array('class'=>'table-actions table-edit', 'title'=>'Editar')), anchor("usuarios/alterar_senha/$linha->id", ' ', array('class'=>'table-actions table-pass', 'title'=>'Alterar Senha')), anchor("usuarios/excluir/$linha->id", ' ', array('class'=>'table-actions table-delete deletareg', 'title'=>'Excluir')));
+                        echo '</tr>';
+                    endforeach;
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <?php
+        break;      
     default:
         echo '<div class="alert-box alert"><p>Tela solicitada não existe!!</p></div>';
         break;

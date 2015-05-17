@@ -80,6 +80,25 @@
     padding:10px 30px;
     display:block;
 }
+
+/* tabelas */
+a.table-actions{
+    width: 16px; height: 16px;
+    display: inline-block;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-right: 3px;
+}
+.table-edit{
+    background:url("../images/actions-edit.png");
+}
+.table-pass{
+    background:url("../images/actions-pass.png");
+}
+.table-delete{
+    background:url("../images/actions-delete.png");
+}
+
  
 /*
 .top .top-bar-section .dropdown li a{

@@ -11,7 +11,9 @@
 	  		<?php if (esta_logado(FALSE)) { ?>
 	  			<div class="row header">
 	  				<div class="eight columns">
-	  					<a href="<?php echo base_url('painel'); ?>"><h3>Liberato - ADMINISTRADOR</h3></a>
+	  					<a href="<?php echo base_url('painel'); ?>">
+	  						<img src="<?php echo base_url('images/logo.png'); ?>" alt="Logo Liberato">
+	  					</a>
 	  				</div>
 	  				<div class="four columns">
 	  					<p class="text-right">Logado como <strong><?php echo $this->session->userdata('user_nome'); ?></strong></p>
@@ -30,7 +32,7 @@
 					                <a href="#">Cursos<span class="arrow">&#9660;</span></a>
 					                <ul class="sub-menu">
 					                    <li><?php echo anchor('usuarios/cadastrar_curso', 'Cadastrar'); ?></li>
-					                    <li><?php echo anchor('usuarios/gerenciar_curso', 'Gerenciar'); ?></li>
+					                    <li><?php echo anchor('usuarios/gerenciar', 'Gerenciar'); ?></li>
 					                </ul>
 					            </li>
 					            <li>

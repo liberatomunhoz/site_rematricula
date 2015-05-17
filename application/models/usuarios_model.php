@@ -51,6 +51,10 @@ class Usuarios_model extends CI_Model {
 			return FALSE;
 		}		
 	}
+
+	public function get_all(){
+		return $this->db->get('usuarios');
+	}
 }
 
 
