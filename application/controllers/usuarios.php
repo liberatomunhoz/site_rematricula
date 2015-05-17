@@ -169,16 +169,50 @@ class Usuarios extends CI_Controller {
         load_template();
     }
 
-    public function gerenciar(){
+    public function gerenciar_curso(){
         esta_logado();
         set_tema('footerinc', load_js(array('data-table', 'table')), FALSE);
-        set_tema('titulo', 'Listagem de usuários');
+        set_tema('titulo', 'Listagem de cursos');
 
-        set_tema('conteudo', load_modulo('usuarios', 'gerenciar'));
+        set_tema('conteudo', load_modulo('usuarios', 'gerenciar_curso'));
         load_template();
     }
 
+    public function gerenciar_disciplina(){
+        esta_logado();
+        set_tema('footerinc', load_js(array('data-table', 'table')), FALSE);
+        set_tema('titulo', 'Listagem de disciplinas');
 
+        set_tema('conteudo', load_modulo('usuarios', 'gerenciar_disciplina'));
+        load_template();
+    }
+
+    public function gerenciar_professor(){
+        esta_logado();
+        set_tema('footerinc', load_js(array('data-table', 'table')), FALSE);
+        set_tema('titulo', 'Listagem de professores');
+
+        set_tema('conteudo', load_modulo('usuarios', 'gerenciar_professor'));
+        load_template();
+    }
+
+    public function gerenciar_aluno(){
+        esta_logado();
+        set_tema('footerinc', load_js(array('data-table', 'table')), FALSE);
+        set_tema('titulo', 'Listagem de alunos');
+
+        set_tema('conteudo', load_modulo('usuarios', 'gerenciar_aluno'));
+        load_template();
+    }
+
+    public function gerenciar_turma(){
+        esta_logado();
+        set_tema('footerinc', load_js(array('data-table', 'table')), FALSE);
+        set_tema('titulo', 'Listagem de turmas');
+
+        set_tema('conteudo', load_modulo('usuarios', 'gerenciar_turma'));
+        load_template();
+    }
 }
 
 /* End of file usuarios.php */

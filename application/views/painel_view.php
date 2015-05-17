@@ -32,7 +32,7 @@
 					                <a href="#">Cursos<span class="arrow">&#9660;</span></a>
 					                <ul class="sub-menu">
 					                    <li><?php echo anchor('usuarios/cadastrar_curso', 'Cadastrar'); ?></li>
-					                    <li><?php echo anchor('usuarios/gerenciar', 'Gerenciar'); ?></li>
+					                    <li><?php echo anchor('usuarios/gerenciar_curso', 'Gerenciar'); ?></li>
 					                </ul>
 					            </li>
 					            <li>
