@@ -12,7 +12,81 @@ class Usuarios extends CI_Controller {
         $this->load->view('nomeview'); 
     }
 
-    public function login()
+    public function login(){
+        $user_tipe = $this->session->userdata('user_tipe');
+        if ( $user_tipe != null ) {
+            if ( $user_tipe == 1 ) {
+                if (esta_logado(FALSE)) redirect('painel');
+            } else if ( $user_tipe == 2 ) {
+                if (esta_logado(FALSE)) redirect('aluno');
+            } else if ( $user_tipe == 3 ) {
+                if (esta_logado(FALSE)) redirect('cadastro_notas');
+            } else {
+                echo "Tipo de usuário inválido! Comunique o desenvolvedor.";
+            }
+        }
+
+        $this->form_validation->set_rules('login', 'USUÁRIO', 'trim|required|min_length[4]');
+        $this->form_validation->set_rules('senha', 'SENHA', 'trim|required|min_length[6]');
+        $this->form_validation->set_rules('tipo', 'TIPO', 'trim');
+        
+        if($this->form_validation->run()==TRUE):
+            $login  = $this->input->post('login', TRUE);
+            $senha  = md5($this->input->post('senha', TRUE));
+            $tipo   = $this->input->post('tipo', TRUE);
+
+            $redirect = $this->input->post('redirect', TRUE);
+
+            if($this->usuarios->do_login($login, $senha) == TRUE):
+                $query = $this->usuarios->get_bylogin($login, $tipo)->row();
+                $dados = array(
+                    'user_cod'          => $query->cod_usuario,
+                    'user_name'         => $query->nome,
+                    'user_tipe'         => $query->tipo,
+                    'user_admin_sist'   => $query->admin_sist,
+                    'user_login'        => $login,
+                    'user_logado'       => TRUE,
+                );
+                
+                $this->session->set_userdata($dados);
+
+                echo "<pre>".print_r($dados)."</pre>";
+
+                if($redirect != ''):
+                    redirect($redirect);
+                else:
+                    if ( $dados['user_tipe'] == 1 ) {
+                        redirect('painel');
+                    } else if ( $dados['user_tipe'] == 2 ) {
+                        redirect('rematricula');
+                    } else if( $dados['user_tipe'] == 3 ) {
+                        redirect('cadastro_notas');
+                    }
+                endif;
+            else:
+                
+                $query = $this->usuarios->get_bycodigo($login, $senha)->row();
+                if(empty($query)):
+                    set_msg('errologin', 'Usuário inexistente', 'erro');
+                elseif($query->senha != $senha):
+                    set_msg('errologin', 'Senha Incorreta', 'erro');
+                elseif($query->ativo == 0):
+                    set_msg('errologin', 'Este usuário está inativo', 'erro');
+                else:
+                    set_msg('errologin', 'Erro desconhecido, contate o desenvolvedor', 'erro');
+                endif;
+                redirect('usuarios/login');
+            endif;
+        endif;
+        //carregar o modulo usuarios e mostrar a tela de login
+        // set_tema($prop, $valor, $replace=TRUE)
+        set_tema('titulo', 'login');//$tema['titulo']     = 'Login';
+                             // load_modulo('modulo', 'tela', 'diretorio(admin ou site');
+        set_tema('conteudo', load_modulo('usuarios', 'login'));//$tema['conteudo'] = load_modulo('usuarios', 'login', 'admin');
+        set_tema('rodape', '');
+        load_template();
+    }
+    /*public function login()
     {
         //carregar o modulo usuarios e mostrar a tela de login
         $this->form_validation->set_rules('usuario','USUÁRIO','trim|required|min_length[4]|strtolower');
@@ -48,11 +122,12 @@ class Usuarios extends CI_Controller {
         set_tema('conteudo', load_modulo('usuarios', 'login'));
         set_tema('rodape', '');
         load_template(); 
-    }
+    } */
 
     public function logoff(){
         //auditoria('Logoff no sistema', 'O usuário "'.$this->usuarios->get_byid($this->session->userdata('user_id'))->row()->login.'" fez logoff do sistema', FALSE);
-        $this->session->unset_userdata(array('user_id'=>'', 'user_nome'=>'', 'user_admin'=>'', 'user_logado'=>''));
+        //$this->session->unset_userdata(array('user_id'=>'', 'user_nome'=>'', 'user_admin'=>'', 'user_logado'=>''));
+        $this->session->unset_userdata(array('user_cod'=>'', 'user_name'=>'', 'user_tipe'=>'', 'user_admin_sist'=>'', 'user_logado'=>''));
         $this->session->sess_destroy();
         $this->session->sess_create();
         set_msg('logoffok', 'Logoff efetuado com sucesso', 'sucesso');

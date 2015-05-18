@@ -1,8 +1,18 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 //carrega um modulo do sistema devolvendo a tela solicitada
+function load_modulo($modulo=NULL, $tela=NULL){
+    $CI =& get_instance();
 
-function load_modulo($modulo=NULL, $tela=NULL, $diretorio='painel')
+    if($modulo != NULL):
+        return $CI->load->view("painel/$modulo", array('tela'=>$tela), TRUE);
+    else:
+        return FALSE;
+    endif;
+}
+
+
+/*function load_modulo($modulo=NULL, $tela=NULL, $diretorio='painel')
 {
     $CI =& get_instance();
     if ($modulo!=NULL) {
@@ -11,7 +21,7 @@ function load_modulo($modulo=NULL, $tela=NULL, $diretorio='painel')
         return FALSE;
     }
     
-}
+}*/
 //seta valores ao array $tema da classe sistema
 function set_tema($prop, $valor, $replace=TRUE)
 {

@@ -5,6 +5,26 @@ switch ($tela) {
         echo '<div class="small-5 columns small-centered">';
         echo form_open('usuarios/login', array('class'=>'custom loginform'));
         echo form_fieldset('Identifique-se');
+        erros_validacao();
+        get_msg('logoffok');
+        get_msg('errologin');
+        echo form_label('Usuário');
+        echo form_input(array('name'=>'login'), set_value('login'), 'autofocus');
+        echo form_label('Senha');
+        echo form_password(array('name'=>'senha'), set_value('senha'));
+        echo form_hidden('redirect', $this->session->userdata('redir_para'));
+        echo form_submit(array('name'=>'logar', 'class'=>'button radius right'), 'Login');
+        echo '<p>'.anchor('usuarios/nova_senha', 'Esqueci minha senha').'</p>';
+        echo form_fieldset_close();
+        echo form_close();
+        echo '</div>';
+        echo '</div>';
+        break;
+   /* case 'login':
+        echo '<div class="row">';
+        echo '<div class="small-5 columns small-centered">';
+        echo form_open('usuarios/login', array('class'=>'custom loginform'));
+        echo form_fieldset('Identifique-se');
         get_msg('errologin');
         erros_validacao();
         get_msg('logoffok');
@@ -17,7 +37,7 @@ switch ($tela) {
         echo form_fieldset_close();
         echo form_close();
         echo '</div>';
-        break;
+        break; */
     case 'nova_senha':
         echo '<div class="small-5 columns small-centered">';
         echo form_open('usuarios/nova_Senha', array('class'=>'custom loginform'));
@@ -153,13 +173,13 @@ switch ($tela) {
                 </thead>
                 <tbody>
                     <?php
-                    $query = $this->usuarios->get_all()->result();
-                    foreach ($query as $linha):
+                    //$query = $this->usuarios->get_all()->result();
+                    //foreach ($query as $linha):
                         echo '<tr>';
                         printf('<td>%s</td>', 'Técnico em informática para Internet');
-                        printf('<td class="text-center">%s%s%s</td>', anchor("usuarios/editar/$linha->id", ' ', array('class'=>'table-actions table-edit', 'title'=>'Editar')), anchor("usuarios/alterar_senha/$linha->id", ' ', array('class'=>'table-actions table-pass', 'title'=>'Alterar Senha')), anchor("usuarios/excluir/$linha->id", ' ', array('class'=>'table-actions table-delete deletareg', 'title'=>'Excluir')));
+                        printf('<td class="text-center">%s%s%s</td>', anchor("usuarios/editar/", ' ', array('class'=>'table-actions table-edit', 'title'=>'Editar')), anchor("usuarios/alterar_senha/", ' ', array('class'=>'table-actions table-pass', 'title'=>'Alterar Senha')), anchor("usuarios/excluir/", ' ', array('class'=>'table-actions table-delete deletareg', 'title'=>'Excluir')));
                         echo '</tr>';
-                    endforeach;
+                    //endforeach;
                     ?>
                 </tbody>
             </table>
@@ -184,15 +204,15 @@ switch ($tela) {
                 </thead>
                 <tbody>
                     <?php
-                    $query = $this->usuarios->get_all()->result();
-                    foreach ($query as $linha):
+                    //$query = $this->usuarios->get_all()->result();
+                    //foreach ($query as $linha):
                         echo '<tr>';
                         printf('<td>%s</td>', 'Banco de dados I');
                         printf('<td>%s</td>', 'Tec. Informática p/ Internet');
                         printf('<td>%s</td>', 'Algoritmos de Programação');
-                        printf('<td class="text-center">%s%s%s</td>', anchor("usuarios/editar/$linha->id", ' ', array('class'=>'table-actions table-edit', 'title'=>'Editar')), anchor("usuarios/alterar_senha/$linha->id", ' ', array('class'=>'table-actions table-pass', 'title'=>'Alterar Senha')), anchor("usuarios/excluir/$linha->id", ' ', array('class'=>'table-actions table-delete deletareg', 'title'=>'Excluir')));
+                        printf('<td class="text-center">%s%s%s</td>', anchor("usuarios/editar/", ' ', array('class'=>'table-actions table-edit', 'title'=>'Editar')), anchor("usuarios/alterar_senha/", ' ', array('class'=>'table-actions table-pass', 'title'=>'Alterar Senha')), anchor("usuarios/excluir/", ' ', array('class'=>'table-actions table-delete deletareg', 'title'=>'Excluir')));
                         echo '</tr>';
-                    endforeach;
+                    //endforeach;
                     ?>
                 </tbody>
             </table>
@@ -220,8 +240,8 @@ switch ($tela) {
                 </thead>
                 <tbody>
                     <?php
-                    $query = $this->usuarios->get_all()->result();
-                    foreach ($query as $linha):
+                    //$query = $this->usuarios->get_all()->result();
+                    //foreach ($query as $linha):
                         echo '<tr>';
                         printf('<td>%s</td>', 'Raul');
                         printf('<td>%s</td>', 'raul');
@@ -229,9 +249,9 @@ switch ($tela) {
                         printf('<td>%s</td>', '23/08/2015');
                         printf('<td>%s</td>', 'raul@liberato.com.br');
                         printf('<td>%s</td>', '123456');
-                        printf('<td class="text-center">%s%s%s</td>', anchor("usuarios/editar/$linha->id", ' ', array('class'=>'table-actions table-edit', 'title'=>'Editar')), anchor("usuarios/alterar_senha/$linha->id", ' ', array('class'=>'table-actions table-pass', 'title'=>'Alterar Senha')), anchor("usuarios/excluir/$linha->id", ' ', array('class'=>'table-actions table-delete deletareg', 'title'=>'Excluir')));
+                        printf('<td class="text-center">%s%s%s</td>', anchor("usuarios/editar/", ' ', array('class'=>'table-actions table-edit', 'title'=>'Editar')), anchor("usuarios/alterar_senha/", ' ', array('class'=>'table-actions table-pass', 'title'=>'Alterar Senha')), anchor("usuarios/excluir/", ' ', array('class'=>'table-actions table-delete deletareg', 'title'=>'Excluir')));
                         echo '</tr>';
-                    endforeach;
+                    //endforeach;
                     ?>
                 </tbody>
             </table>
@@ -259,8 +279,8 @@ switch ($tela) {
                 </thead>
                 <tbody>
                     <?php
-                    $query = $this->usuarios->get_all()->result();
-                    foreach ($query as $linha):
+                    //$query = $this->usuarios->get_all()->result();
+                    //foreach ($query as $linha):
                         echo '<tr>';
                         printf('<td>%s</td>', 'Rodrigo Molina Munhoz');
                         printf('<td>%s</td>', '13102595');
@@ -268,9 +288,9 @@ switch ($tela) {
                         printf('<td>%s</td>', '01/08/1995');
                         printf('<td>%s</td>', 'rodrigomunhoz1995@gmail.com');
                         printf('<td>%s</td>', '123456');
-                        printf('<td class="text-center">%s%s%s</td>', anchor("usuarios/editar/$linha->id", ' ', array('class'=>'table-actions table-edit', 'title'=>'Editar')), anchor("usuarios/alterar_senha/$linha->id", ' ', array('class'=>'table-actions table-pass', 'title'=>'Alterar Senha')), anchor("usuarios/excluir/$linha->id", ' ', array('class'=>'table-actions table-delete deletareg', 'title'=>'Excluir')));
+                        printf('<td class="text-center">%s%s%s</td>', anchor("usuarios/editar/", ' ', array('class'=>'table-actions table-edit', 'title'=>'Editar')), anchor("usuarios/alterar_senha/", ' ', array('class'=>'table-actions table-pass', 'title'=>'Alterar Senha')), anchor("usuarios/excluir/", ' ', array('class'=>'table-actions table-delete deletareg', 'title'=>'Excluir')));
                         echo '</tr>';
-                    endforeach;
+                    //endforeach;
                     ?>
                 </tbody>
             </table>
@@ -294,14 +314,14 @@ switch ($tela) {
                 </thead>
                 <tbody>
                     <?php
-                    $query = $this->usuarios->get_all()->result();
-                    foreach ($query as $linha):
+                    //$query = $this->usuarios->get_all()->result();
+                    //foreach ($query as $linha):
                         echo '<tr>';
                         printf('<td>%s</td>', '11131');
                         printf('<td>%s</td>', 'Algoritmos de Programação');
-                        printf('<td class="text-center">%s%s%s</td>', anchor("usuarios/editar/$linha->id", ' ', array('class'=>'table-actions table-edit', 'title'=>'Editar')), anchor("usuarios/alterar_senha/$linha->id", ' ', array('class'=>'table-actions table-pass', 'title'=>'Alterar Senha')), anchor("usuarios/excluir/$linha->id", ' ', array('class'=>'table-actions table-delete deletareg', 'title'=>'Excluir')));
+                        printf('<td class="text-center">%s%s%s</td>', anchor("usuarios/editar/", ' ', array('class'=>'table-actions table-edit', 'title'=>'Editar')), anchor("usuarios/alterar_senha/", ' ', array('class'=>'table-actions table-pass', 'title'=>'Alterar Senha')), anchor("usuarios/excluir/", ' ', array('class'=>'table-actions table-delete deletareg', 'title'=>'Excluir')));
                         echo '</tr>';
-                    endforeach;
+                    //endforeach;
                     ?>
                 </tbody>
             </table>
@@ -316,14 +336,10 @@ switch ($tela) {
         endif; ?>
         <div class="small-5 columns small-centered">
             <?php
+                erros_validacao();
+                get_msg('msgok'); 
                 echo form_open();
                 echo form_fieldset('Alterar senha');
-                echo form_label('Nome completo');
-                echo form_input(array('name'=>'nome', 'class'=>'five', 'disabled'=>'disabled'));
-                echo form_label('Email');
-                echo form_input(array('name'=>'email', 'class'=>'five', 'disabled'=>'disabled'));
-                echo form_label('Login');
-                echo form_input(array('name'=>'login', 'class'=>'three', 'disabled'=>'disabled'));
                 echo form_label('Nova Senha');
                 echo form_password(array('name'=>'senha', 'class'=>'three'), set_value('senha'), 'autofocus');
                 echo form_label('Repita a senha');
