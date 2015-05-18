@@ -12,7 +12,7 @@
 	  			<div class="row header">
 	  				<div class="eight columns">
 	  					<a href="<?php echo base_url('painel'); ?>">
-	  						<img src="<?php echo base_url('images/logo.png'); ?>" alt="Logo Liberato">
+	  						<img class="img-logo" src="<?php echo base_url('images/logo.png'); ?>" alt="Logo Liberato">
 	  					</a>
 	  				</div>
 	  				<div class="four columns">

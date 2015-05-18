@@ -213,6 +213,20 @@ class Usuarios extends CI_Controller {
         set_tema('conteudo', load_modulo('usuarios', 'gerenciar_turma'));
         load_template();
     }
+
+    public function alterar_senha(){
+        esta_logado();
+        $this->form_validation->set_message('matches', 'O campo %s está diferente do campo %s');
+        $this->form_validation->set_rules('senha', 'SENHA', 'trim|required|min_length[4]|strtolower');
+        $this->form_validation->set_rules('senha2', 'REPITA A SENHA', 'trim|required|min_length[4]|strtolower|matches[senha]');
+        if ($this->form_validation->run()==TRUE):
+            $dados['senha'] = md5($this->input->post('senha'));
+            $this->usuarios->do_update($dados, array('id'=>$this->input->post('idusuario')));
+        endif;
+        set_tema('titulo', 'Alteração de senha');
+        set_tema('conteudo', load_modulo('usuarios', 'alterar_senha'));
+        load_template();
+    }
 }
 
 /* End of file usuarios.php */

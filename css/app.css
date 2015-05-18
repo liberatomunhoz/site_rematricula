@@ -99,6 +99,10 @@ a.table-actions{
     background:url("../images/actions-delete.png");
 }
 
+/*img*/
+.img-logo {
+    margin-top: 20px;
+}
  
 /*
 .top .top-bar-section .dropdown li a{

@@ -19,7 +19,7 @@ switch ($tela) {
         echo '</div>';
         break;
     case 'nova_senha':
-        echo '<div class="four columns centered">';
+        echo '<div class="small-5 columns small-centered">';
         echo form_open('usuarios/nova_Senha', array('class'=>'custom loginform'));
         echo form_fieldset('Recuperação de senha');
         get_msg('msgok');
@@ -34,7 +34,7 @@ switch ($tela) {
         echo '</div>';
         break;
     case 'cadastrar_aluno':
-        echo '<div class="twelve columns">';
+        echo '<div class="small-5 columns small-centered">';
         erros_validacao();
         get_msg('msgok');
         echo form_open('usuarios/cadastrar_aluno', array('class'=>'custom'));
@@ -62,7 +62,7 @@ switch ($tela) {
         echo '</div>';
         break;
     case 'cadastrar_curso':
-        echo '<div class="twelve columns">';
+        echo '<div class="small-5 columns small-centered">';
         erros_validacao();
         get_msg('msgok');
         echo form_open('usuarios/cadastrar_curso', array('class'=>'custom'));
@@ -76,7 +76,7 @@ switch ($tela) {
         echo '</div>';
         break; 
     case 'cadastrar_disciplina':
-        echo '<div class="twelve columns">';
+        echo '<div class="small-5 columns small-centered">';
         erros_validacao();
         get_msg('msgok');
         echo form_open('usuarios/cadastrar_disciplina', array('class'=>'custom'));
@@ -94,7 +94,7 @@ switch ($tela) {
         echo '</div>';
         break;
     case 'cadastrar_professor':
-        echo '<div class="twelve columns">';
+        echo '<div class="small-5 columns small-centered">';
         erros_validacao();
         get_msg('msgok');
         echo form_open('usuarios/cadastrar_aluno', array('class'=>'custom'));
@@ -122,7 +122,7 @@ switch ($tela) {
         echo '</div>';
         break; 
     case 'cadastrar_turma':
-        echo '<div class="twelve columns">';
+        echo '<div class="small-5 columns small-centered">';
         erros_validacao();
         get_msg('msgok');
         echo form_open('usuarios/cadastrar_turma', array('class'=>'custom'));
@@ -308,7 +308,35 @@ switch ($tela) {
         </div>
         <?php
         break;
-       
+    case 'alterar_senha':
+        $iduser = $this->uri->segment(3);
+        if ($iduser==NULL):
+            set_msg('msgerro', 'Escolha um usuário para alterar', 'erro');
+            redirect('painel');
+        endif; ?>
+        <div class="small-5 columns small-centered">
+            <?php
+                echo form_open();
+                echo form_fieldset('Alterar senha');
+                echo form_label('Nome completo');
+                echo form_input(array('name'=>'nome', 'class'=>'five', 'disabled'=>'disabled'));
+                echo form_label('Email');
+                echo form_input(array('name'=>'email', 'class'=>'five', 'disabled'=>'disabled'));
+                echo form_label('Login');
+                echo form_input(array('name'=>'login', 'class'=>'three', 'disabled'=>'disabled'));
+                echo form_label('Nova Senha');
+                echo form_password(array('name'=>'senha', 'class'=>'three'), set_value('senha'), 'autofocus');
+                echo form_label('Repita a senha');
+                echo form_password(array('name'=>'senha2', 'class'=>'three'), set_value('senha2'));
+                echo anchor('painel', 'Cancelar', array('class'=>'button radius alert espaco'));
+                echo form_submit(array('name'=>'alterarsenha', 'class'=>'button radius'), 'Salvar Dados');
+                echo form_hidden('idusuario', $iduser);
+                echo form_fieldset_close();
+                echo form_close();
+            ?>
+        </div>      
+        <?php
+        break;
     default:
         echo '<div class="alert-box alert"><p>Tela solicitada não existe!!</p></div>';
         break;
